@@ -1,0 +1,41 @@
+{
+    "name": "Product",
+        "type": "object",
+            "properties": {
+        "name": {
+            "type": "string",
+                "description": "Product name"
+        },
+        "description": {
+            "type": "string",
+                "description": "Product description"
+        },
+        "price": {
+            "type": "number",
+                "description": "Price in euros"
+        },
+        "image_url": {
+            "type": "string",
+                "description": "Product image URL"
+        },
+        "stock": {
+            "type": "number",
+                "default": 0,
+                    "description": "Available stock"
+        },
+        "is_active": {
+            "type": "boolean",
+                "default": true,
+                    "description": "Whether product is available"
+        },
+        "category_id": {
+            "type": "string",
+                "description": "Reference to Category"
+        }
+    },
+    "required": [
+        "name",
+        "price",
+        "category_id"
+    ]
+}

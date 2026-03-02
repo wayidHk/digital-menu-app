@@ -1,0 +1,23 @@
+{
+    "name": "Category",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Category name"
+        },
+        "display_order": {
+            "type": "number",
+            "default": 0,
+            "description": "Display order for sorting"
+        },
+        "is_active": {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether category is visible"
+        }
+    },
+    "required": [
+        "name"
+    ]
+}

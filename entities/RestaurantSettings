@@ -1,0 +1,28 @@
+{
+    "name": "RestaurantSettings",
+        "type": "object",
+            "properties": {
+        "restaurant_name": {
+            "type": "string",
+                "default": "Mon Restaurant"
+        },
+        "num_tables": {
+            "type": "number",
+                "default": 6
+        },
+        "counter_password": {
+            "type": "string",
+                "description": "Password for counter access"
+        },
+        "logo_url": {
+            "type": "string"
+        },
+        "theme_color": {
+            "type": "string",
+                "default": "#d4a574"
+        }
+    },
+    "required": [
+        "restaurant_name"
+    ]
+}

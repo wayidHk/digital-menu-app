@@ -1,0 +1,56 @@
+{
+    "name": "Order",
+        "type": "object",
+            "properties": {
+        "table_id": {
+            "type": "number",
+                "description": "Table number (1-6)"
+        },
+        "session_id": {
+            "type": "string",
+                "description": "Client session UUID"
+        },
+        "total": {
+            "type": "number",
+                "description": "Order total"
+        },
+        "status": {
+            "type": "string",
+                "enum": [
+                    "pending",
+                    "ready",
+                    "delivered",
+                    "cancelled"
+                ],
+                    "default": "pending",
+                        "description": "Order status"
+        },
+        "items": {
+            "type": "array",
+                "description": "Order line items",
+                    "items": {
+                "type": "object",
+                    "properties": {
+                    "product_id": {
+                        "type": "string"
+                    },
+                    "product_name": {
+                        "type": "string"
+                    },
+                    "quantity": {
+                        "type": "number"
+                    },
+                    "price": {
+                        "type": "number"
+                    }
+                }
+            }
+        }
+    },
+    "required": [
+        "table_id",
+        "session_id",
+        "total",
+        "items"
+    ]
+}
