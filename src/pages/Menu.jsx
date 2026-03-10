@@ -263,8 +263,6 @@ export default function Menu() {
                 onClose={() => setOrdersOpen(false)}
                 orders={myOrders}
             />
-
-            <NavSwitcher currentPage="Menu" />
         </div>
     );
 }

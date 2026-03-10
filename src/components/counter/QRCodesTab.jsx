@@ -1,12 +1,22 @@
 import React, { useState, useRef } from 'react';
-import { QrCode, Download, Printer, ExternalLink } from 'lucide-react';
+import { QrCode, Download, Printer, ExternalLink, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const TABLE_COUNT = 6;
-
 export default function QRCodesTab() {
+    const [tableCount, setTableCount] = useState(() => {
+        const saved = localStorage.getItem('tableCount');
+        return saved ? parseInt(saved, 10) : 6;
+    });
     const [selectedTable, setSelectedTable] = useState(null);
     const qrRef = useRef(null);
+
+    const handleAddTable = () => {
+        setTableCount(prev => {
+            const newValue = prev + 1;
+            localStorage.setItem('tableCount', newValue.toString());
+            return newValue;
+        });
+    };
 
     const getMenuUrl = (tableId) => {
         const baseUrl = window.location.origin;
@@ -55,7 +65,7 @@ export default function QRCodesTab() {
                         @media print { .qr-card { break-inside: avoid; } }
                     </style>
         `;
-        for (let i = 1; i <= TABLE_COUNT; i++) {
+        for (let i = 1; i <= tableCount; i++) {
             html += `
                 <div class="qr-card">
                     <h2 style="margin-bottom:0.5rem;">Table ${i}</h2>
@@ -80,15 +90,21 @@ export default function QRCodesTab() {
                         Chaque QR code dirige vers le menu avec le numéro de table pré-rempli
                     </p>
                 </div>
-                <Button onClick={printAll} variant="outline" className="rounded-xl">
-                    <Printer className="w-4 h-4 mr-2" />
-                    Imprimer tout
-                </Button>
+                <div className="flex gap-2">
+                    <Button onClick={printAll} variant="outline" className="rounded-xl">
+                        <Printer className="w-4 h-4 mr-2" />
+                        Imprimer tout
+                    </Button>
+                    <Button onClick={handleAddTable} className="rounded-xl bg-orange-600 hover:bg-orange-700 text-white">
+                        <Plus className="w-4 h-4 mr-2" />
+                        Ajouter une table
+                    </Button>
+                </div>
             </div>
 
             {/* QR Grid */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {Array.from({ length: TABLE_COUNT }, (_, i) => i + 1).map(tableId => (
+                {Array.from({ length: tableCount }, (_, i) => i + 1).map(tableId => (
                     <div
                         key={tableId}
                         className="bg-white rounded-2xl border border-gray-200 p-5 text-center hover:shadow-md transition-all group"

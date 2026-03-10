@@ -9,7 +9,6 @@ export default function NavSwitcher({ currentPage }) {
     const [open, setOpen] = useState(false);
 
     const links = [
-        { page: 'Menu', label: 'Menu Client', icon: Utensils, color: 'from-amber-500 to-amber-700' },
         { page: 'Counter', label: 'Comptoir', icon: Monitor, color: 'from-slate-600 to-slate-800' },
         { page: 'Kitchen', label: 'Cuisine', icon: ChefHat, color: 'from-orange-500 to-red-700' },
         { page: 'Finance', label: 'Finances', icon: BarChart2, color: 'from-emerald-500 to-emerald-700' },

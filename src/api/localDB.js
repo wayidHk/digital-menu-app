@@ -1,6 +1,6 @@
 /**
  * localDB.js — localStorage-based CRUD data layer
- * Replaces Base44 SDK with a fully local, offline-capable store.
+ * Fully local, offline-capable store.
  * Data is persisted in localStorage and synced across tabs via BroadcastChannel.
  */
 

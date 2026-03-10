@@ -61,6 +61,6 @@ export const PAGES = {
 }
 
 export const pagesConfig = {
-    mainPage: "Menu",
+    mainPage: "Counter",
     Pages: PAGES,
 };
